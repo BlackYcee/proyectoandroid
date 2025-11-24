@@ -8,7 +8,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.inacap.colocolo.data.LoginResponse
 import com.inacap.colocolo.ui.AuthViewModel
 import com.inacap.colocolo.R
 import androidx.compose.foundation.Image
@@ -71,5 +70,11 @@ fun LoginScreen(viewModel: AuthViewModel, navController: NavController) {
             Text("Ingresar")
         }
 
+        Button(
+            onClick = { navController.navigate("register") },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Registrarse")
+        }
     }
 }

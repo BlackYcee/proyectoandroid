@@ -12,13 +12,14 @@ import androidx.navigation.NavController
 import com.inacap.colocolo.nav.Route
 import com.inacap.colocolo.ui.AuthViewModel
 
+
 @Composable
 fun RegisterScreen(viewModel: AuthViewModel, nav: NavController) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var pwd by remember { mutableStateOf("") }
 
-    // 👇 Este es el contexto correcto en Compose
+
     val context = LocalContext.current
 
     Column(
@@ -71,6 +72,15 @@ fun RegisterScreen(viewModel: AuthViewModel, nav: NavController) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Crear cuenta")
+        }
+
+        Spacer(Modifier.height(8.dp))
+
+        Button(
+            onClick = { nav.navigate(Route.Login.path) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Iniciar sesión")
         }
     }
 }

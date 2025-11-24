@@ -1,10 +1,5 @@
 package com.inacap.colocolo.data
 
-import com.inacap.colocolo.data.RegisterRequest
-import com.inacap.colocolo.data.RegisterResponse
-import com.inacap.colocolo.data.LoginRequest
-import com.inacap.colocolo.data.LoginResponse
-
 class AuthRepository(private val api: AuthApi) {
 
     suspend fun register(name: String, email: String, pass: String): Result<RegisterResponse> {

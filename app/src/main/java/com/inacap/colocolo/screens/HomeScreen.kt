@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-// Importar NavController para que el tipo sea reconocido
 import androidx.navigation.NavController
 import com.inacap.colocolo.ui.theme.ColocoloTheme
 import com.inacap.colocolo.ui.AuthViewModel
@@ -20,14 +19,13 @@ import android.widget.Toast
 import androidx.compose.material3.MaterialTheme
 
 @Composable
-fun HomeScreen(viewModel: AuthViewModel = viewModel(), navController: NavController) { // <-- ¡CORREGIDO!
-    // Estado para guardar la información del perfil
+fun HomeScreen(viewModel: AuthViewModel = viewModel(), navController: NavController) {
     var profileData by remember { mutableStateOf<ProfileResponse?>(null) }
-    // Estado para el indicador de carga
+
     var isLoading by remember { mutableStateOf(true) }
     val context = LocalContext.current
 
-    // Efecto que se ejecuta solo al inicio del Composable
+
     LaunchedEffect(key1 = Unit) {
         viewModel.getProfile(
             onSuccess = { resp ->
@@ -65,8 +63,7 @@ fun HomeScreen(viewModel: AuthViewModel = viewModel(), navController: NavControl
                     Spacer(Modifier.height(16.dp))
                     Text(text = "ID de Usuario: ${profileData!!.id}", fontSize = 18.sp)
                     Text(text = "Correo: ${profileData!!.email}", fontSize = 18.sp)
-                    // Aquí podrías usar navController, por ejemplo:
-                    // Button(onClick = { navController.navigate("logout") }) { Text("Cerrar Sesión") }
+
                 }
             }
             else -> {
@@ -76,7 +73,7 @@ fun HomeScreen(viewModel: AuthViewModel = viewModel(), navController: NavControl
     }
 }
 
-// El @Preview no necesita el navController, así que lo dejamos simple.
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
